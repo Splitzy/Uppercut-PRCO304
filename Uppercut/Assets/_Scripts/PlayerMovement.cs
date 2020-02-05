@@ -4,21 +4,16 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    Rigidbody rb;
-    public float speed = 2.0f;
+    public float speed = 5f;
+    public string h = "Horizontal_P1";
+    Vector2 move;
 
-
-    // Start is called before the first frame update
-    void Start()
+    void FixedUpdate()
     {
-        rb = GetComponent<Rigidbody>();
-    }
+        move.x = Input.GetAxis(h);
 
-    // Update is called once per frame
-    void Update()
-    {
-        float moveHorizontal = Input.GetAxis("Horizontal");
+        Vector2 m = new Vector2(move.x, 0) * speed * Time.deltaTime;
 
-        rb.AddForce(new Vector3(moveHorizontal, 0.0f, 0.0f) * speed);
+        transform.Translate(m);
     }
 }
