@@ -15,6 +15,11 @@ public class PlayerHealth : MonoBehaviour
         healthBar.value = calcHealth();
     }
 
+    void Update()
+    {
+        healthBar.value = calcHealth();
+    }
+
     public void TakeDamage(float dmg)
     {
         health -= dmg;
