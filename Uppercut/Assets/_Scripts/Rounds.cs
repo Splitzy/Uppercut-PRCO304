@@ -40,7 +40,28 @@ public class Rounds : MonoBehaviour
         }
         else if (time == 0f)
         {
-            TimeRound();
+            if (p1Health > p2Health)
+            {
+                SetRounds(P1Rounds, p1Index, Color.blue);
+                p1Index++;
+                CheckIndex(p1Index);
+            }
+            else if (p2Health > p1Health)
+            {
+                SetRounds(P2Rounds, p2Index, Color.blue);
+                p2Index++;
+                CheckIndex(p2Index);
+            }
+            else if (p2Health == p1Health)
+            {
+                Debug.Log("It's a draw...");
+                SetRounds(P1Rounds, p1Index, Color.red);
+                SetRounds(P2Rounds, p2Index, Color.red);
+                p1Index++;
+                p2Index++;
+                StartRound();
+            }
+                
         }
     }
 
@@ -56,29 +77,6 @@ public class Rounds : MonoBehaviour
     void SetRounds(Image[] images, int index, Color c)
     {
         images[index].color = c;
-    }
-
-    void TimeRound()
-    {
-        if(p1Health > p2Health)
-        {
-            SetRounds(P1Rounds, p1Index, Color.blue);
-            p1Index++;
-            CheckIndex(p1Index);
-        }
-        else if(p2Health > p1Health)
-        {
-            SetRounds(P2Rounds, p2Index, Color.blue);
-            p2Index++;
-            CheckIndex(p2Index);
-        }
-        else if(p2Health == p1Health)
-        {
-            Debug.Log("It's a draw...");
-            SetRounds(P1Rounds, p1Index, Color.red);
-            SetRounds(P2Rounds, p2Index, Color.red);
-            StartRound();
-        }
     }
 
     void CheckIndex(int index)
