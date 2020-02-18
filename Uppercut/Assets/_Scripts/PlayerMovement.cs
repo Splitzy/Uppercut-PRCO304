@@ -7,9 +7,26 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5f;
     public string h = "Horizontal_P1";
     Vector2 move;
+    Animator anim;
+    public GameObject model;
+
+    private void Start()
+    {
+        anim = model.GetComponent<Animator>();
+    }
 
     void FixedUpdate()
     {
+        if (Input.GetAxis(h) > 0 || Input.GetAxis(h) < 0)
+        {
+            anim.SetInteger("Move", 1);
+        }
+
+        if (Input.GetAxis(h) == 0)
+        {
+            anim.SetInteger("Move", 0);
+        }
+
         move.x = Input.GetAxis(h);
 
         Vector2 m = new Vector2(move.x, 0) * speed * Time.deltaTime;

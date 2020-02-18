@@ -8,7 +8,6 @@ public class PlayerHealth : MonoBehaviour
     public float health, maxHealth = 100f;
     public Slider healthBar;
 
-    // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;

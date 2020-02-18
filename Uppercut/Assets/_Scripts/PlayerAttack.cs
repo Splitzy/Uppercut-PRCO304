@@ -6,24 +6,37 @@ public class PlayerAttack : MonoBehaviour
 {
     public string punchString, uppercutString;
     public Collider[] attackHitboxes;
+    public GameObject model;
+    Animator anim;
+    bool attacking;
+
+    private void Start()
+    {
+        anim = model.GetComponent<Animator>();
+        attacking = false;
+    }
 
     void Update()
     {
-        if (Input.GetButtonDown(punchString))
+        if (Input.GetButtonDown(punchString) && attacking == false)
         {
-            Attack(attackHitboxes[0], 3f);
-            //Debug.Log(punchString);
+            anim.SetBool("Punch", true);
+            attacking = true;
+            StartCoroutine(Attack(attackHitboxes[0], 8f));
         }
 
-        if (Input.GetButtonDown(uppercutString))
+        if (Input.GetButtonDown(uppercutString) && attacking == false)
         {
-            Attack(attackHitboxes[1], 1000f);
+            attacking = true;
+            //Attack(attackHitboxes[1], 15f);
             //Debug.Log(uppercutString);
         }
     }
 
-    void Attack(Collider col, float dmg)
+    IEnumerator Attack(Collider col, float dmg)
     {
+        yield return new WaitForSeconds(0.25f);
+
         Collider[] cols = Physics.OverlapBox(col.bounds.center, col.bounds.extents, col.transform.rotation, LayerMask.GetMask("Hitbox"));
             
         foreach(Collider c in cols)
@@ -35,6 +48,11 @@ public class PlayerAttack : MonoBehaviour
 
             c.SendMessage("TakeDamage", dmg);
         }
+
+        yield return new WaitForSeconds(0.25f);
+
+        anim.SetBool("Punch", false);
+        attacking = false;
     }
 }
 
