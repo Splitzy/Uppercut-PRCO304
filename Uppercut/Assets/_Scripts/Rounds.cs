@@ -10,47 +10,44 @@ public class Rounds : MonoBehaviour
     public Image[] P1Rounds, P2Rounds;
     public GameObject P1, P2, timer;
     public Transform P1Spawn, P2Spawn;
+    bool check = false; 
 
 
-
-    // Start is called before the first frame update
     void Start()
     {
         StartRound();
     }
 
-    // Update is called once per frame
     void Update()
     {
         time = timer.GetComponent<Timer>().currentTime;
         p1Health = P1.GetComponent<PlayerHealth>().health;
         p2Health = P2.GetComponent<PlayerHealth>().health;
 
-        if (p1Health == 0 && time != 0f)
+        if (p1Health == 0 && time != 0f && !check)
         {
+            check = true;
             SetRounds(P2Rounds, p2Index, Color.green);
             p2Index++;
-            CheckIndex(p2Index);
         }
-        else if (p2Health == 0 && time != 0f)
+        else if (p2Health == 0 && time != 0f && !check)
         {
+            check = true;
             SetRounds(P1Rounds, p1Index, Color.green);
             p1Index++;
-            CheckIndex(p1Index);
         }
-        else if (time == 0f)
+        else if (time == 0f && !check)
         {
+            check = true;
             if (p1Health > p2Health)
             {
                 SetRounds(P1Rounds, p1Index, Color.blue);
                 p1Index++;
-                CheckIndex(p1Index);
             }
             else if (p2Health > p1Health)
             {
                 SetRounds(P2Rounds, p2Index, Color.blue);
                 p2Index++;
-                CheckIndex(p2Index);
             }
             else if (p2Health == p1Health)
             {
@@ -67,6 +64,7 @@ public class Rounds : MonoBehaviour
 
     void StartRound()
     {
+        check = false;
         timer.GetComponent<Timer>().currentTime = 60f;
         P1.GetComponent<PlayerHealth>().health = 100f;
         P2.GetComponent<PlayerHealth>().health = 100f;
@@ -76,18 +74,29 @@ public class Rounds : MonoBehaviour
 
     void SetRounds(Image[] images, int index, Color c)
     {
-        images[index].color = c;
-    }
-
-    void CheckIndex(int index)
-    {
-        if (index == 5)
+        if (index == 4)
         {
-            Debug.Log("Game is over");
+            images[index].color = c;
+            GameOver();
         }
         else
         {
+            images[index].color = c;
             StartRound();
         }
+    }
+
+    void GameOver()
+    {
+        Time.timeScale = 0.0f;
+        if(P1Rounds[4].color != Color.white)
+        {
+            Debug.Log("Player 1 wins");
+        }
+        else if(P2Rounds[4].color != Color.white)
+        {
+            Debug.Log("Player 2 wins");
+        }
+        
     }
 }
