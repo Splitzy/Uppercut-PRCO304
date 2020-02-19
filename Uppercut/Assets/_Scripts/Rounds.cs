@@ -8,6 +8,7 @@ public class Rounds : MonoBehaviour
     float p1Health, p2Health, time;
     int p1Index, p2Index = 0;
     public Image[] P1Rounds, P2Rounds;
+    public Sprite defaultSprite, winSprite, drawSprite, timeSprite;
     public GameObject P1, P2, timer;
     public Transform P1Spawn, P2Spawn;
     bool check = false; 
@@ -27,13 +28,13 @@ public class Rounds : MonoBehaviour
         if (p1Health == 0 && time != 0f && !check)
         {
             check = true;
-            SetRounds(P2Rounds, p2Index, Color.green);
+            SetRounds(P2Rounds, p2Index, winSprite);
             p2Index++;
         }
         else if (p2Health == 0 && time != 0f && !check)
         {
             check = true;
-            SetRounds(P1Rounds, p1Index, Color.green);
+            SetRounds(P1Rounds, p1Index, winSprite);
             p1Index++;
         }
         else if (time == 0f && !check)
@@ -41,19 +42,19 @@ public class Rounds : MonoBehaviour
             check = true;
             if (p1Health > p2Health)
             {
-                SetRounds(P1Rounds, p1Index, Color.blue);
+                SetRounds(P1Rounds, p1Index, timeSprite);
                 p1Index++;
             }
             else if (p2Health > p1Health)
             {
-                SetRounds(P2Rounds, p2Index, Color.blue);
+                SetRounds(P2Rounds, p2Index, timeSprite);
                 p2Index++;
             }
             else if (p2Health == p1Health)
             {
                 Debug.Log("It's a draw...");
-                SetRounds(P1Rounds, p1Index, Color.red);
-                SetRounds(P2Rounds, p2Index, Color.red);
+                SetRounds(P1Rounds, p1Index, drawSprite);
+                SetRounds(P2Rounds, p2Index, drawSprite);
                 p1Index++;
                 p2Index++;
                 StartRound();
@@ -72,16 +73,16 @@ public class Rounds : MonoBehaviour
         P2.transform.position = P2Spawn.position;
     }
 
-    void SetRounds(Image[] images, int index, Color c)
+    void SetRounds(Image[] images, int index, Sprite s)
     {
         if (index == 4)
         {
-            images[index].color = c;
+            images[index].sprite = s;
             GameOver();
         }
         else
         {
-            images[index].color = c;
+            images[index].sprite = s;
             StartRound();
         }
     }
@@ -89,11 +90,11 @@ public class Rounds : MonoBehaviour
     void GameOver()
     {
         Time.timeScale = 0.0f;
-        if(P1Rounds[4].color != Color.white)
+        if(P1Rounds[4].sprite != defaultSprite)
         {
             Debug.Log("Player 1 wins");
         }
-        else if(P2Rounds[4].color != Color.white)
+        else if(P2Rounds[4].sprite != defaultSprite)
         {
             Debug.Log("Player 2 wins");
         }
