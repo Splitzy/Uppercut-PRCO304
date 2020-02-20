@@ -9,17 +9,20 @@ public class PlayerAttack : MonoBehaviour
     public GameObject model;
     Animator anim;
     bool attacking;
+    PlayerMovement move;
 
     private void Start()
     {
         anim = model.GetComponent<Animator>();
         attacking = false;
+        move = gameObject.GetComponent<PlayerMovement>();
     }
 
     void Update()
     {
         if (Input.GetButtonDown(punchString) && attacking == false)
         {
+            move.enabled = false;
             anim.SetBool("Punch", true);
             attacking = true;
             StartCoroutine(Attack(attackHitboxes[0], 8f));
@@ -53,6 +56,7 @@ public class PlayerAttack : MonoBehaviour
 
         anim.SetBool("Punch", false);
         attacking = false;
+        move.enabled = true;
     }
 }
 
