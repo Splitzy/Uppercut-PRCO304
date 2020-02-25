@@ -958,6 +958,7 @@ Transform:
   m_Children:
   - {fileID: 1381142583}
   - {fileID: 2040963877}
+  - {fileID: 1913784627}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1008,6 +1009,7 @@ MonoBehaviour:
   uppercutString: Uppercut_P1
   attackHitboxes:
   - {fileID: 2040963878}
+  - {fileID: 1913784628}
   model: {fileID: 1381142582}
 --- !u!114 &633116103
 MonoBehaviour:
@@ -1024,6 +1026,7 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   healthBar: {fileID: 193969019}
+  model: {fileID: 1381142582}
 --- !u!1 &675267300
 GameObject:
   m_ObjectHideFlags: 0
@@ -2331,6 +2334,50 @@ RectTransform:
   m_AnchoredPosition: {x: -4.999954, y: -0.5}
   m_SizeDelta: {x: -20, y: 15.79}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1501954305
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1501954306}
+  - component: {fileID: 1501954307}
+  m_Layer: 8
+  m_Name: P2 Uppercut Hitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1501954306
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501954305}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.79, y: 2.042, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1.31}
+  m_Children: []
+  m_Father: {fileID: 2073643663}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1501954307
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501954305}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 3.25, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1565593634
 GameObject:
   m_ObjectHideFlags: 0
@@ -2940,6 +2987,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1888294635}
   m_CullTransparentMesh: 0
+--- !u!1 &1913784626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1913784627}
+  - component: {fileID: 1913784628}
+  m_Layer: 8
+  m_Name: P1 Uppercut Hitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1913784627
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913784626}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.762, y: 1.995, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1.31}
+  m_Children: []
+  m_Father: {fileID: 633116099}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1913784628
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913784626}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 3.25, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2040963876
 GameObject:
   m_ObjectHideFlags: 0
@@ -2965,7 +3056,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040963876}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.34, y: 1.995, z: 0}
+  m_LocalPosition: {x: 1.166, y: 1.995, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1.31}
   m_Children: []
   m_Father: {fileID: 633116099}
@@ -3031,6 +3122,7 @@ Transform:
   m_Children:
   - {fileID: 175335926}
   - {fileID: 1085093484}
+  - {fileID: 1501954306}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3081,6 +3173,7 @@ MonoBehaviour:
   uppercutString: Uppercut_P2
   attackHitboxes:
   - {fileID: 1085093483}
+  - {fileID: 1501954307}
   model: {fileID: 175335925}
 --- !u!114 &2073643667
 MonoBehaviour:
@@ -3097,6 +3190,7 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   healthBar: {fileID: 521768772}
+  model: {fileID: 175335925}
 --- !u!1 &2091638208
 GameObject:
   m_ObjectHideFlags: 0

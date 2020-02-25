@@ -7,11 +7,18 @@ public class PlayerHealth : MonoBehaviour
 {
     public float health, maxHealth = 100f;
     public Slider healthBar;
+    public GameObject model;
+    Animator anim;
+    PlayerMovement move;
+    PlayerAttack attack;
 
     void Start()
     {
+        anim = model.GetComponent<Animator>();
         health = maxHealth;
         healthBar.value = calcHealth();
+        move = gameObject.GetComponent<PlayerMovement>();
+        attack = gameObject.GetComponent<PlayerAttack>();
     }
 
     void Update()
@@ -19,8 +26,10 @@ public class PlayerHealth : MonoBehaviour
         healthBar.value = calcHealth();
     }
 
-    public void TakeDamage(float dmg)
+    public IEnumerator TakeDamage(float dmg)
     {
+        attack.enabled = false;
+
         health -= dmg;
 
         healthBar.value = calcHealth();
@@ -29,6 +38,18 @@ public class PlayerHealth : MonoBehaviour
         {
             Die();
         }
+
+        anim.SetBool("Hurt", true);
+
+        move.enabled = false;
+
+        yield return new WaitForSeconds(0.25f);
+
+        anim.SetBool("Hurt", false);
+
+        move.enabled = true;
+
+        attack.enabled = true;
     }
 
     float calcHealth()
@@ -39,6 +60,5 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         health = 0;
-        Debug.Log("dead");
     }
 }
