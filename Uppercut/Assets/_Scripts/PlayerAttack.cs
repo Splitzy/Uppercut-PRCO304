@@ -6,35 +6,40 @@ public class PlayerAttack : MonoBehaviour
 {
     public string punchString, uppercutString;
     public Collider[] attackHitboxes;
-    public GameObject model;
+    public GameObject model, countdownIMG;
     Animator anim;
     bool attacking;
     PlayerMovement move;
+    Countdown go;
 
     private void Start()
     {
         anim = model.GetComponent<Animator>();
         attacking = false;
         move = gameObject.GetComponent<PlayerMovement>();
+        go = countdownIMG.GetComponent<Countdown>();
     }
 
     void Update()
     {
-        if (Input.GetButtonDown(punchString) && attacking == false)
+        if(go.canAttack)
         {
-            move.enabled = false;
-            anim.SetBool("Punch", true);
-            attacking = true;
-            StartCoroutine(Attack(attackHitboxes[0], 8f, 0.25f, "Punch"));
-        }
+            if (Input.GetButtonDown(punchString) && attacking == false)
+            {
+                move.enabled = false;
+                anim.SetBool("Punch", true);
+                attacking = true;
+                StartCoroutine(Attack(attackHitboxes[0], 8f, 0.25f, "Punch"));
+            }
 
-        if (Input.GetButtonDown(uppercutString) && attacking == false)
-        {
-            move.enabled = false;
-            attacking = true;
-            anim.SetBool("Uppercut", true);
-            StartCoroutine(Attack(attackHitboxes[1], 15f, 0.5f, "Uppercut"));
-        }
+            if (Input.GetButtonDown(uppercutString) && attacking == false)
+            {
+                move.enabled = false;
+                attacking = true;
+                anim.SetBool("Uppercut", true);
+                StartCoroutine(Attack(attackHitboxes[1], 15f, 0.5f, "Uppercut"));
+            }
+        } 
     }
 
     IEnumerator Attack(Collider col, float dmg, float wait, string animation)
@@ -42,10 +47,10 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(wait);
 
         Collider[] cols = Physics.OverlapBox(col.bounds.center, col.bounds.extents, col.transform.rotation, LayerMask.GetMask("Hitbox"));
-            
-        foreach(Collider c in cols)
+
+        foreach (Collider c in cols)
         {
-            if(c.transform.root == transform)
+            if (c.transform.root == transform)
             {
                 continue;
             }
@@ -60,5 +65,3 @@ public class PlayerAttack : MonoBehaviour
         move.enabled = true;
     }
 }
-
-

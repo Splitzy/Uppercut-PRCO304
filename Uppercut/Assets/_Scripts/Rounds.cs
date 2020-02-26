@@ -9,19 +9,23 @@ public class Rounds : MonoBehaviour
     int p1Index, p2Index = 0;
     public Image[] P1Rounds, P2Rounds;
     public Sprite defaultSprite, winSprite, drawSprite, timeSprite;
-    public GameObject P1, P2, timer;
+    public GameObject P1, P2, timer, countdownIMG;
     public Transform P1Spawn, P2Spawn;
-    bool check = false; 
+    bool check = false;
+    Countdown go;
 
 
     void Start()
     {
+        go = countdownIMG.GetComponent<Countdown>();
         StartRound();
     }
 
     void Update()
     {
+
         time = timer.GetComponent<Timer>().currentTime;
+        
         p1Health = P1.GetComponent<PlayerHealth>().health;
         p2Health = P2.GetComponent<PlayerHealth>().health;
 
@@ -65,12 +69,17 @@ public class Rounds : MonoBehaviour
 
     void StartRound()
     {
+        go.countdownDone = false;
+        go.canAttack = false;
+        countdownIMG.SetActive(true);
         check = false;
-        timer.GetComponent<Timer>().currentTime = 60f;
+
         P1.GetComponent<PlayerHealth>().health = 100f;
         P2.GetComponent<PlayerHealth>().health = 100f;
         P1.transform.position = P1Spawn.position;
         P2.transform.position = P2Spawn.position;
+
+        timer.GetComponent<Timer>().currentTime = 60f;
     }
 
     void SetRounds(Image[] images, int index, Sprite s)
