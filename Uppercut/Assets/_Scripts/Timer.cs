@@ -24,7 +24,9 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(currentTime > 0 && go.canAttack)
+        countdownTimer.text = currentTime.ToString("0");
+
+        if (currentTime > 0 && go.canAttack)
         {
             currentTime -= 1 * Time.deltaTime;
             countdownTimer.text = currentTime.ToString("0");

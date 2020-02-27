@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class Rounds : MonoBehaviour
 {
-    float p1Health, p2Health, time;
-    int p1Index, p2Index = 0;
     public Image[] P1Rounds, P2Rounds;
     public Sprite defaultSprite, winSprite, drawSprite, timeSprite;
     public GameObject P1, P2, timer, countdownIMG;
     public Transform P1Spawn, P2Spawn;
+
+    float p1Health, p2Health, time;
+    int p1Index, p2Index = 0;
     bool check = false;
     Countdown go;
 
@@ -23,9 +24,8 @@ public class Rounds : MonoBehaviour
 
     void Update()
     {
+        time = timer.GetComponent<Timer>().currentTime;    
 
-        time = timer.GetComponent<Timer>().currentTime;
-        
         p1Health = P1.GetComponent<PlayerHealth>().health;
         p2Health = P2.GetComponent<PlayerHealth>().health;
 
