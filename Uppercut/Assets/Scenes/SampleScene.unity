@@ -2010,7 +2010,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1085093484}
   - component: {fileID: 1085093483}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: P2 Punch Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2571,7 +2571,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1501954306}
   - component: {fileID: 1501954307}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: P2 Uppercut Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3224,7 +3224,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1913784627}
   - component: {fileID: 1913784628}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: P1 Uppercut Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3268,7 +3268,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2040963877}
   - component: {fileID: 2040963878}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: P1 Punch Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
