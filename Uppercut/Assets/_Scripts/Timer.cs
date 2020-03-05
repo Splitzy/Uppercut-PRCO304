@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    public Text countdownTimer;
+    public Text countdownTimer, timerBG;
 
     public GameObject countdownIMG;
 
@@ -25,16 +25,19 @@ public class Timer : MonoBehaviour
     void Update()
     {
         countdownTimer.text = currentTime.ToString("0");
+        timerBG.text = currentTime.ToString("0");
 
         if (currentTime > 0 && go.canAttack)
         {
             currentTime -= 1 * Time.deltaTime;
             countdownTimer.text = currentTime.ToString("0");
+            timerBG.text = currentTime.ToString("0");
         }
         else if (currentTime <= 0 && go.canAttack)
         {
             currentTime = 0;
             countdownTimer.text = "0";
+            timerBG.text = "0";
         }
     }
 }

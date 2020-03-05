@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if(go.canAttack)
         {
+            Debug.Log(Input.GetAxis("Horizontal_P1"));
+
             if (Input.GetAxis(h) > 0 || Input.GetAxis(h) < 0)
             {
                 anim.SetInteger("Move", 1);

@@ -7,7 +7,7 @@ public class Rounds : MonoBehaviour
 {
     public Image[] P1Rounds, P2Rounds;
     public Sprite defaultSprite, winSprite, drawSprite, timeSprite;
-    public GameObject P1, P2, timer, countdownIMG;
+    public GameObject P1, P2, timer, countdownIMG, koIMG, fadeOut;
     public Transform P1Spawn, P2Spawn;
 
     float p1Health, p2Health, time;
@@ -61,13 +61,12 @@ public class Rounds : MonoBehaviour
                 SetRounds(P2Rounds, p2Index, drawSprite);
                 p1Index++;
                 p2Index++;
-                StartRound();
             }
                 
         }
     }
 
-    void StartRound()
+    public void StartRound()
     {
         go.countdownDone = false;
         go.canAttack = false;
@@ -80,6 +79,8 @@ public class Rounds : MonoBehaviour
         P2.transform.position = P2Spawn.position;
 
         timer.GetComponent<Timer>().currentTime = 60f;
+
+        fadeOut.SetActive(true);
     }
 
     void SetRounds(Image[] images, int index, Sprite s)
@@ -92,7 +93,7 @@ public class Rounds : MonoBehaviour
         else
         {
             images[index].sprite = s;
-            StartRound();
+            koIMG.SetActive(true);
         }
     }
 
