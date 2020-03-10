@@ -27,17 +27,17 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetButtonDown(punchString) && attacking == false)
             {
                 move.enabled = false;
-                anim.SetBool("Punch", true);
+                anim.SetTrigger("Punch");
                 attacking = true;
-                StartCoroutine(Attack(attackHitboxes[0], 8f, 0.25f, "Punch"));
+                StartCoroutine(Attack(attackHitboxes[0], 8f, 0.2f, "Punch"));
             }
 
             if (Input.GetButtonDown(uppercutString) && attacking == false)
             {
                 move.enabled = false;
                 attacking = true;
-                anim.SetBool("Uppercut", true);
-                StartCoroutine(Attack(attackHitboxes[1], 15f, 0.5f, "Uppercut"));
+                anim.SetTrigger("Uppercut");
+                StartCoroutine(Attack(attackHitboxes[1], 15f, 0.3f, "Uppercut"));
             }
         } 
     }
@@ -45,6 +45,7 @@ public class PlayerAttack : MonoBehaviour
     IEnumerator Attack(Collider col, float dmg, float wait, string animation)
     {
         yield return new WaitForSeconds(wait);
+
 
         Collider[] cols = Physics.OverlapBox(col.bounds.center, col.bounds.extents, col.transform.rotation, LayerMask.GetMask("Hitbox"));
 
@@ -60,7 +61,6 @@ public class PlayerAttack : MonoBehaviour
 
         yield return new WaitForSeconds(wait);
 
-        anim.SetBool(animation, false);
         attacking = false;
         move.enabled = true;
     }

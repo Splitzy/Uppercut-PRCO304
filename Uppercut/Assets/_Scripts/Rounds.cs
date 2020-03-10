@@ -7,7 +7,7 @@ public class Rounds : MonoBehaviour
 {
     public Image[] P1Rounds, P2Rounds;
     public Sprite defaultSprite, winSprite, drawSprite, timeSprite;
-    public GameObject P1, P2, timer, countdownIMG, koIMG, fadeOut;
+    public GameObject P1, P2, timer, countdownIMG, koIMG, fadeOut, P1Model, P2Model;
     public Transform P1Spawn, P2Spawn;
 
     float p1Health, p2Health, time;
@@ -77,6 +77,8 @@ public class Rounds : MonoBehaviour
         P2.GetComponent<PlayerHealth>().health = 100f;
         P1.transform.position = P1Spawn.position;
         P2.transform.position = P2Spawn.position;
+        P1Model.GetComponent<Animator>().SetInteger("Walk", 0);
+        P2Model.GetComponent<Animator>().SetInteger("Walk", 0);
 
         timer.GetComponent<Timer>().currentTime = 60f;
 

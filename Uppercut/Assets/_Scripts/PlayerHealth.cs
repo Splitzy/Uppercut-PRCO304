@@ -24,6 +24,10 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         healthBar.value = calcHealth();
+        if(health == maxHealth)
+        {
+            anim.SetInteger("Death", 0);
+        }
     }
 
     public IEnumerator TakeDamage(float dmg)
@@ -39,13 +43,12 @@ public class PlayerHealth : MonoBehaviour
             Die();
         }
 
-        anim.SetBool("Hurt", true);
+        anim.SetTrigger("Hit");
 
         move.enabled = false;
 
         yield return new WaitForSeconds(0.25f);
 
-        anim.SetBool("Hurt", false);
 
         move.enabled = true;
 
@@ -60,5 +63,6 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         health = 0;
+        anim.SetInteger("Death", 1);
     }
 }
