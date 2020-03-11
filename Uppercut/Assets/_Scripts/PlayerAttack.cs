@@ -1,16 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public string punchString, uppercutString;
+    public string punchString, uppercutString, specialString;
     public Collider[] attackHitboxes;
     public GameObject model, countdownIMG;
     Animator anim;
     bool attacking;
     PlayerMovement move;
     Countdown go;
+    public int specialMeter = 0;
+    public Slider meterSlider;
+
+    protected float Timer;
+    int delay = 1;
 
     private void Start()
     {
@@ -18,12 +24,27 @@ public class PlayerAttack : MonoBehaviour
         attacking = false;
         move = gameObject.GetComponent<PlayerMovement>();
         go = countdownIMG.GetComponent<Countdown>();
+        meterSlider.value = specialMeter;
     }
 
     void Update()
     {
         if(go.canAttack)
         {
+            Timer += Time.deltaTime;
+
+            if (Timer >= delay)
+            {
+                Timer = 0f;
+                specialMeter += 2;
+                meterSlider.value = specialMeter;
+            }
+
+            if (specialMeter >= 100)
+            {
+                specialMeter = 100;
+            }
+
             if (Input.GetButtonDown(punchString) && attacking == false)
             {
                 move.enabled = false;
@@ -38,6 +59,15 @@ public class PlayerAttack : MonoBehaviour
                 attacking = true;
                 anim.SetTrigger("Uppercut");
                 StartCoroutine(Attack(attackHitboxes[1], 15f, 0.3f, "Uppercut"));
+            }
+
+            if(Input.GetButtonDown(specialString) && attacking == false && specialMeter == 100)
+            {
+                specialMeter = 0;
+                move.enabled = false;
+                attacking = true;
+                anim.SetTrigger("Kick");
+                StartCoroutine(Attack(attackHitboxes[2], 30f, 0.5f, "Kick"));  
             }
         } 
     }
@@ -57,6 +87,8 @@ public class PlayerAttack : MonoBehaviour
             }
 
             c.SendMessage("TakeDamage", dmg);
+            specialMeter += 10;
+            meterSlider.value = specialMeter;
         }
 
         yield return new WaitForSeconds(wait);
