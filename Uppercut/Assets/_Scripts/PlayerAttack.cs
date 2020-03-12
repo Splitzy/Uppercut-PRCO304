@@ -58,7 +58,7 @@ public class PlayerAttack : MonoBehaviour
                 move.enabled = false;
                 attacking = true;
                 anim.SetTrigger("Uppercut");
-                StartCoroutine(Attack(attackHitboxes[1], 15f, 0.3f, "Uppercut"));
+                StartCoroutine(Attack(attackHitboxes[1], 15f, 0.4f, "Uppercut"));
             }
 
             if(Input.GetButtonDown(specialString) && attacking == false && specialMeter == 100)
