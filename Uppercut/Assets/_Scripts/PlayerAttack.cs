@@ -76,7 +76,6 @@ public class PlayerAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(wait);
 
-
         Collider[] cols = Physics.OverlapBox(col.bounds.center, col.bounds.extents, col.transform.rotation, LayerMask.GetMask("Hitbox"));
 
         foreach (Collider c in cols)
@@ -92,7 +91,7 @@ public class PlayerAttack : MonoBehaviour
         }
 
         yield return new WaitForSeconds(wait);
-
+        
         attacking = false;
         move.enabled = true;
     }

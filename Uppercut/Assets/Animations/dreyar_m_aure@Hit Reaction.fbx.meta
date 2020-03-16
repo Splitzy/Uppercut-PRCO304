@@ -38,7 +38,7 @@ ModelImporter:
       name: Hit Reaction
       takeName: mixamo.com
       internalID: 0
-      firstFrame: 0
+      firstFrame: 2.5
       lastFrame: 33
       wrapMode: 0
       orientationOffsetY: 0

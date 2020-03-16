@@ -27,13 +27,13 @@ public class PlayerMovement : MonoBehaviour
 
             input = new Vector3(moveHorizontal, 0, 0);
 
-            if (Input.GetAxis(h) > 0 || Input.GetAxis(h) < 0)
+            if (Input.GetAxisRaw(h) > 0 || Input.GetAxisRaw(h) < 0)
             {
-                anim.SetInteger("Walk", 1);
+                anim.SetBool("Walking", true);
             }
-            else if (Input.GetAxis(h) == 0)
+            else if (Input.GetAxisRaw(h) == 0)
             {
-                anim.SetInteger("Walk", 0);
+                anim.SetBool("Walking", false);
             }
 
             rb.MovePosition(transform.position + (input * speed * Time.fixedDeltaTime));
