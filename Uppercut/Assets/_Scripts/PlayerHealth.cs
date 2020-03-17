@@ -12,6 +12,7 @@ public class PlayerHealth : MonoBehaviour
     Animator anim;
     PlayerMovement move;
     PlayerAttack attack;
+    Rigidbody rb;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class PlayerHealth : MonoBehaviour
         healthBar.value = health;
         move = gameObject.GetComponent<PlayerMovement>();
         attack = gameObject.GetComponent<PlayerAttack>();
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -74,5 +76,14 @@ public class PlayerHealth : MonoBehaviour
         anim.ResetTrigger("Hit");
         health = 0;
         anim.SetInteger("Death", 1);
+    }
+
+    public IEnumerator KnockBack(Vector3 dir, float force)
+    {
+        rb.AddForce(dir * force, ForceMode.Impulse);
+
+        yield return new WaitForSeconds(1f);
+
+        dir = Vector3.zero;
     }
 }

@@ -50,7 +50,7 @@ public class PlayerAttack : MonoBehaviour
                 move.enabled = false;
                 anim.SetTrigger("Punch");
                 attacking = true;
-                StartCoroutine(Attack(attackHitboxes[0], 8f, 0.2f, "Punch"));
+                StartCoroutine(Attack(attackHitboxes[0], 8f, 0.2f, 1.5f));
             }
 
             if (Input.GetButtonDown(uppercutString) && attacking == false)
@@ -58,7 +58,7 @@ public class PlayerAttack : MonoBehaviour
                 move.enabled = false;
                 attacking = true;
                 anim.SetTrigger("Uppercut");
-                StartCoroutine(Attack(attackHitboxes[1], 15f, 0.4f, "Uppercut"));
+                StartCoroutine(Attack(attackHitboxes[1], 15f, 0.4f, 3f));
             }
 
             if(Input.GetButtonDown(specialString) && attacking == false && specialMeter == 100)
@@ -67,12 +67,12 @@ public class PlayerAttack : MonoBehaviour
                 move.enabled = false;
                 attacking = true;
                 anim.SetTrigger("Kick");
-                StartCoroutine(Attack(attackHitboxes[2], 30f, 0.5f, "Kick"));  
+                StartCoroutine(Attack(attackHitboxes[2], 30f, 0.5f, 3.5f));  
             }
         } 
     }
 
-    IEnumerator Attack(Collider col, float dmg, float wait, string animation)
+    IEnumerator Attack(Collider col, float dmg, float wait, float force)
     {
         yield return new WaitForSeconds(wait);
 
@@ -86,6 +86,14 @@ public class PlayerAttack : MonoBehaviour
             }
 
             c.SendMessage("TakeDamage", dmg);
+
+            if(c.gameObject.tag == "Player")
+            {
+                Debug.Log("Player hi!");
+                Vector3 dir = c.transform.position - transform.position;
+                StartCoroutine(c.gameObject.GetComponent<PlayerHealth>().KnockBack(dir, force));
+            }
+
             specialMeter += 10;
             meterSlider.value = specialMeter;
         }
