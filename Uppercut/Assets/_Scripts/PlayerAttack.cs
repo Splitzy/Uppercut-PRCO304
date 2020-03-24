@@ -89,7 +89,6 @@ public class PlayerAttack : MonoBehaviour
 
             if(c.gameObject.tag == "Player")
             {
-                Debug.Log("Player hi!");
                 Vector3 dir = c.transform.position - transform.position;
                 StartCoroutine(c.gameObject.GetComponent<PlayerHealth>().KnockBack(dir, force));
             }
