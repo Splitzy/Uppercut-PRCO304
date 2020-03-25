@@ -56,7 +56,6 @@ public class Rounds : MonoBehaviour
             }
             else if (p2Health == p1Health)
             {
-                Debug.Log("It's a draw...");
                 SetRounds(P1Rounds, p1Index, drawSprite);
                 SetRounds(P2Rounds, p2Index, drawSprite);
                 p1Index++;

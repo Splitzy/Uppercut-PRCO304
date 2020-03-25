@@ -9,7 +9,9 @@ public class PlayerHealth : MonoBehaviour
     public Slider healthBar;
     public Image fill;
     public GameObject model;
+    public AudioClip[] hurtClip, deathClip;
     Animator anim;
+    AudioSource src;
     PlayerMovement move;
     PlayerAttack attack;
     Rigidbody rb;
@@ -22,6 +24,7 @@ public class PlayerHealth : MonoBehaviour
         move = gameObject.GetComponent<PlayerMovement>();
         attack = gameObject.GetComponent<PlayerAttack>();
         rb = GetComponent<Rigidbody>();
+        src = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -64,6 +67,10 @@ public class PlayerHealth : MonoBehaviour
 
         move.enabled = false;
 
+        src.clip = hurtClip[Random.Range(0, hurtClip.Length)];
+
+        src.Play();
+
         yield return new WaitForSeconds(0.5f);
 
         move.enabled = true;
@@ -75,6 +82,11 @@ public class PlayerHealth : MonoBehaviour
     {
         anim.ResetTrigger("Hit");
         health = 0;
+
+        src.clip = deathClip[Random.Range(0, deathClip.Length)];
+
+        src.Play();
+
         anim.SetInteger("Death", 1);
     }
 

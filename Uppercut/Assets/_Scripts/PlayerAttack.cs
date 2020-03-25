@@ -14,6 +14,8 @@ public class PlayerAttack : MonoBehaviour
     Countdown go;
     public int specialMeter = 0;
     public Slider meterSlider;
+    public AudioClip hitClip, meterAttackClip, meterClip;
+    AudioSource source;
 
     protected float Timer;
     int delay = 1;
@@ -25,6 +27,7 @@ public class PlayerAttack : MonoBehaviour
         move = gameObject.GetComponent<PlayerMovement>();
         go = countdownIMG.GetComponent<Countdown>();
         meterSlider.value = specialMeter;
+        source = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -43,6 +46,8 @@ public class PlayerAttack : MonoBehaviour
             if (specialMeter >= 100)
             {
                 specialMeter = 100;
+                source.clip = meterClip;
+                source.Play();
             }
 
             if (Input.GetButtonDown(punchString) && attacking == false)
@@ -74,6 +79,12 @@ public class PlayerAttack : MonoBehaviour
 
     IEnumerator Attack(Collider col, float dmg, float wait, float force)
     {
+        if (anim.GetBool("Kick") == true)
+        {
+            source.clip = meterAttackClip;
+            source.Play();
+        }
+
         yield return new WaitForSeconds(wait);
 
         Collider[] cols = Physics.OverlapBox(col.bounds.center, col.bounds.extents, col.transform.rotation, LayerMask.GetMask("Hitbox"));
@@ -84,6 +95,9 @@ public class PlayerAttack : MonoBehaviour
             {
                 continue;
             }
+
+            source.clip = hitClip;
+            source.Play();
 
             c.SendMessage("TakeDamage", dmg);
 
