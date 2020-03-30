@@ -20,6 +20,7 @@ public class FighterCamera : MonoBehaviour
     private void Start()
     {
         cam = GetComponent<Camera>();
+
     }
 
     void LateUpdate()
