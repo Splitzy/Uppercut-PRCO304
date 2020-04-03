@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f;
+    public new string name = "";
     public string h = "Horizontal_P1";
     Animator anim;
     public GameObject model, countdown;
@@ -12,11 +14,15 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
     Vector3 input;
 
+    [SerializeField]
+    private Text nameTxt;
+
     private void Start()
     {
         anim = model.GetComponent<Animator>();
         go = countdown.GetComponent<Countdown>();
         rb = GetComponent<Rigidbody>();
+        nameTxt.text = name;
     }
 
     void FixedUpdate()

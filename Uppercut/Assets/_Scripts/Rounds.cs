@@ -5,15 +5,17 @@ using UnityEngine.UI;
 
 public class Rounds : MonoBehaviour
 {
-    public Image[] P1Rounds, P2Rounds;
+    public Image[] p1Rounds, p2Rounds;
     public Sprite defaultSprite, winSprite, drawSprite, timeSprite;
-    public GameObject P1, P2, timer, countdownIMG, koIMG, fadeOut, P1Model, P2Model;
-    public Transform P1Spawn, P2Spawn;
+    public GameObject timer, countdownIMG, koIMG, fadeOut;
+    public Transform p1Spawn, p2Spawn;
 
     float p1Health, p2Health, time;
     int p1Index, p2Index = 0;
     bool check = false;
     Countdown go;
+
+    public GameObject[] players, models;
 
 
     void Start()
@@ -24,21 +26,21 @@ public class Rounds : MonoBehaviour
 
     void Update()
     {
-        time = timer.GetComponent<Timer>().currentTime;    
+        time = timer.GetComponent<Timer>().currentTime;
 
-        p1Health = P1.GetComponent<PlayerHealth>().health;
-        p2Health = P2.GetComponent<PlayerHealth>().health;
+        p1Health = players[0].GetComponent<PlayerHealth>().health;
+        p2Health = players[1].GetComponent<PlayerHealth>().health;
 
         if (p1Health == 0 && time != 0f && !check)
         {
             check = true;
-            SetRounds(P2Rounds, p2Index, winSprite);
+            SetRounds(p2Rounds, p2Index, winSprite);
             p2Index++;
         }
         else if (p2Health == 0 && time != 0f && !check)
         {
             check = true;
-            SetRounds(P1Rounds, p1Index, winSprite);
+            SetRounds(p1Rounds, p1Index, winSprite);
             p1Index++;
         }
         else if (time == 0f && !check)
@@ -46,18 +48,18 @@ public class Rounds : MonoBehaviour
             check = true;
             if (p1Health > p2Health)
             {
-                SetRounds(P1Rounds, p1Index, timeSprite);
+                SetRounds(p1Rounds, p1Index, timeSprite);
                 p1Index++;
             }
             else if (p2Health > p1Health)
             {
-                SetRounds(P2Rounds, p2Index, timeSprite);
+                SetRounds(p2Rounds, p2Index, timeSprite);
                 p2Index++;
             }
             else if (p2Health == p1Health)
             {
-                SetRounds(P1Rounds, p1Index, drawSprite);
-                SetRounds(P2Rounds, p2Index, drawSprite);
+                SetRounds(p1Rounds, p1Index, drawSprite);
+                SetRounds(p2Rounds, p2Index, drawSprite);
                 p1Index++;
                 p2Index++;
             }
@@ -72,12 +74,12 @@ public class Rounds : MonoBehaviour
         countdownIMG.SetActive(true);
         check = false;
 
-        P1.GetComponent<PlayerHealth>().health = 100f;
-        P2.GetComponent<PlayerHealth>().health = 100f;
-        P1.transform.position = P1Spawn.position;
-        P2.transform.position = P2Spawn.position;
-        P1Model.GetComponent<Animator>().SetInteger("Walk", 0);
-        P2Model.GetComponent<Animator>().SetInteger("Walk", 0);
+        players[0].GetComponent<PlayerHealth>().health = 100f;
+        players[1].GetComponent<PlayerHealth>().health = 100f;
+        players[0].transform.position = p1Spawn.position;
+        players[1].transform.position = p2Spawn.position;
+        models[0].GetComponent<Animator>().SetInteger("Walk", 0);
+        models[1].GetComponent<Animator>().SetInteger("Walk", 0);
 
         timer.GetComponent<Timer>().currentTime = 60f;
 
@@ -101,11 +103,11 @@ public class Rounds : MonoBehaviour
     void GameOver()
     {
         Time.timeScale = 0.0f;
-        if(P1Rounds[4].sprite != defaultSprite)
+        if(p1Rounds[4].sprite != defaultSprite)
         {
             Debug.Log("Player 1 wins");
         }
-        else if(P2Rounds[4].sprite != defaultSprite)
+        else if(p2Rounds[4].sprite != defaultSprite)
         {
             Debug.Log("Player 2 wins");
         }

@@ -8,6 +8,8 @@ public class FighterCamera : MonoBehaviour
     [SerializeField]
     private List<Transform> targets;
 
+    private GameObject[] players;
+
     public Vector3 offset;
     public float smoothTime = 0.5f;
     public float minZoom = 40f;
@@ -19,6 +21,16 @@ public class FighterCamera : MonoBehaviour
 
     private void Start()
     {
+        if(players == null)
+        {
+            players = GameObject.FindGameObjectsWithTag("Player");
+
+            foreach (GameObject player in players)
+            {
+                targets.Add(player.transform);
+            }
+        }
+
         cam = GetComponent<Camera>();
 
     }
