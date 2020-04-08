@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public float health, maxHealth = 100f;
-    public Slider healthBar;
-    public Image fill;
-    public GameObject model;
     public AudioClip[] hurtClip, deathClip;
+    public string[] searchString;
+    public GameObject model;
+    Slider healthBar;
+    Image fill;
     Animator anim;
     AudioSource src;
     PlayerMovement move;
@@ -18,6 +19,9 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
+        healthBar = GameObject.Find(searchString[0]).GetComponent<Slider>();
+        fill = GameObject.Find(searchString[1]).GetComponent<Image>();
+
         anim = model.GetComponent<Animator>();
         health = maxHealth;
         healthBar.value = health;

@@ -5,23 +5,27 @@ using UnityEngine.UI;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public string punchString, uppercutString, specialString;
+    public string punchString, uppercutString, specialString, searchString;
     public Collider[] attackHitboxes;
-    public GameObject model, countdownIMG;
+    GameObject countdownIMG;
+    public GameObject model;
     Animator anim;
     bool attacking;
     PlayerMovement move;
     Countdown go;
     public int specialMeter = 0;
-    public Slider meterSlider;
+    Slider meterSlider;
     public AudioClip hitClip, meterAttackClip, meterClip;
     AudioSource source;
+    
 
     protected float Timer;
     int delay = 1;
 
     private void Start()
     {
+        meterSlider = GameObject.Find(searchString).GetComponent<Slider>();
+        countdownIMG = GameObject.Find("Countdown");
         anim = model.GetComponent<Animator>();
         attacking = false;
         move = gameObject.GetComponent<PlayerMovement>();
@@ -66,14 +70,14 @@ public class PlayerAttack : MonoBehaviour
                 StartCoroutine(Attack(attackHitboxes[1], 15f, 0.4f, 3f));
             }
 
-            if(Input.GetButtonDown(specialString) && attacking == false && specialMeter == 100)
-            {
-                specialMeter = 0;
-                move.enabled = false;
-                attacking = true;
-                anim.SetTrigger("Kick");
-                StartCoroutine(Attack(attackHitboxes[2], 30f, 0.5f, 3.5f));  
-            }
+            //if(Input.GetButtonDown(specialString) && attacking == false && specialMeter == 100)
+            //{
+            //    specialMeter = 0;
+            //    move.enabled = false;
+            //    attacking = true;
+            //    anim.SetTrigger("Kick");
+            //    StartCoroutine(Attack(attackHitboxes[2], 30f, 0.5f, 3.5f));  
+            //}
         } 
     }
 

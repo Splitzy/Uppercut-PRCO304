@@ -85,8 +85,8 @@ MonoBehaviour:
   speed: 7
   name: Ryker
   h: Horizontal_P1
+  searchString: Player 1 Name
   model: {fileID: 750531284350473976}
-  countdown: {fileID: 0}
   nameTxt: {fileID: 0}
 --- !u!114 &8740221528727447363
 MonoBehaviour:
@@ -103,14 +103,13 @@ MonoBehaviour:
   punchString: Punch_P1
   uppercutString: Uppercut_P1
   specialString: Special_P1
+  searchString: P1 Special Move
   attackHitboxes:
   - {fileID: 8740221529601560995}
   - {fileID: 8740221529459784625}
   - {fileID: 8740221529021672351}
   model: {fileID: 750531284350473976}
-  countdownIMG: {fileID: 0}
   specialMeter: 0
-  meterSlider: {fileID: 0}
   hitClip: {fileID: 8300000, guid: 04f7dc4d9e987db458a2dad5730d02ec, type: 3}
   meterAttackClip: {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
   meterClip: {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
@@ -128,13 +127,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 100
-  healthBar: {fileID: 0}
-  fill: {fileID: 0}
-  model: {fileID: 750531284350473976}
   hurtClip:
   - {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
   deathClip:
   - {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
+  searchString:
+  - P1 Health
+  - P1 Fill
+  model: {fileID: 750531284350473976}
 --- !u!82 &8740221528727447367
 AudioSource:
   m_ObjectHideFlags: 0

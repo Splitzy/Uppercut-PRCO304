@@ -8,19 +8,23 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5f;
     public new string name = "";
     public string h = "Horizontal_P1";
+    public string searchString;
     Animator anim;
-    public GameObject model, countdown;
+    public GameObject model;
     Countdown go;
     Rigidbody rb;
     Vector3 input;
+    GameObject cd;
 
     [SerializeField]
     private Text nameTxt;
 
     private void Start()
     {
+        nameTxt = GameObject.Find(searchString).GetComponent<Text>();
+        cd = GameObject.Find("Countdown");
         anim = model.GetComponent<Animator>();
-        go = countdown.GetComponent<Countdown>();
+        go = cd.GetComponent<Countdown>();
         rb = GetComponent<Rigidbody>();
         nameTxt.text = name;
     }

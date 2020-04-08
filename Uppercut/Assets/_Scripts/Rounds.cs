@@ -15,11 +15,23 @@ public class Rounds : MonoBehaviour
     bool check = false;
     Countdown go;
 
-    public GameObject[] players, models;
+    public GameObject[] p1Prefabs, p2Prefabs, players, models;
+
+    void InstantiatePlayers()
+    {
+        int p1PrefabIndex = PlayerPrefs.GetInt("P1");
+        int p2PrefabIndex = PlayerPrefs.GetInt("P2");
+        Instantiate(p1Prefabs[p1PrefabIndex], p1Spawn.position, Quaternion.identity);
+        Instantiate(p2Prefabs[p2PrefabIndex], p2Spawn.position, Quaternion.identity);
+
+        players = GameObject.FindGameObjectsWithTag("Player");
+        models = GameObject.FindGameObjectsWithTag("Model");
+    }
 
 
     void Start()
     {
+        InstantiatePlayers();
         go = countdownIMG.GetComponent<Countdown>();
         StartRound();
     }
