@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 7640468953354186612}
   - component: {fileID: 7640468953354186610}
   - component: {fileID: 7640468953354186608}
+  - component: {fileID: 2975190796127168502}
   - component: {fileID: 7640468953354186609}
   - component: {fileID: 7640468953354186615}
   m_Layer: 8
@@ -129,7 +130,6 @@ MonoBehaviour:
   h: Horizontal_P1
   searchString: Player 1 Name
   model: {fileID: 1813133285960394014}
-  countdown: {fileID: 0}
   nameTxt: {fileID: 0}
 --- !u!114 &7640468953354186608
 MonoBehaviour:
@@ -145,17 +145,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   punchString: Punch_P1
   uppercutString: Uppercut_P1
-  specialString: Special_P1
   searchString: P1 Special Move
   attackHitboxes:
   - {fileID: 7640468953482482669}
   - {fileID: 7640468952713443914}
-  countdownIMG: {fileID: 0}
   model: {fileID: 1813133285960394014}
   specialMeter: 0
   hitClip: {fileID: 8300000, guid: 04f7dc4d9e987db458a2dad5730d02ec, type: 3}
-  meterAttackClip: {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
   meterClip: {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
+--- !u!114 &2975190796127168502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7640468953354186603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3779c8901c57c7e43a2fb4deed215a93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  specialString: Special_P1
+  searchString: P1 Special Move
+  model: {fileID: 1813133285960394014}
+  hitClip: {fileID: 8300000, guid: 04f7dc4d9e987db458a2dad5730d02ec, type: 3}
+  meterAttackClip: {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
+  isPlayerOne: 1
+  col: {fileID: 7640468953354186613}
 --- !u!114 &7640468953354186609
 MonoBehaviour:
   m_ObjectHideFlags: 0

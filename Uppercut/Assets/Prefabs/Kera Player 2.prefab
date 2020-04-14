@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6931427853594541102}
   - component: {fileID: 6931427853594541096}
   - component: {fileID: 6931427853594541098}
+  - component: {fileID: 2028489319730535920}
   - component: {fileID: 6931427853594541099}
   - component: {fileID: 6931427853594541101}
   m_Layer: 8
@@ -85,7 +86,6 @@ MonoBehaviour:
   h: Horizontal_P2
   searchString: Player 2 Name
   model: {fileID: 1373754011324823108}
-  countdown: {fileID: 0}
   nameTxt: {fileID: 0}
 --- !u!114 &6931427853594541098
 MonoBehaviour:
@@ -101,17 +101,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   punchString: Punch_P2
   uppercutString: Uppercut_P2
-  specialString: Special_P2
   searchString: P2 Special Move
   attackHitboxes:
   - {fileID: 6931427855015002295}
   - {fileID: 6931427854239475984}
-  countdownIMG: {fileID: 0}
   model: {fileID: 1373754011324823108}
   specialMeter: 0
   hitClip: {fileID: 8300000, guid: 04f7dc4d9e987db458a2dad5730d02ec, type: 3}
-  meterAttackClip: {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
   meterClip: {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
+--- !u!114 &2028489319730535920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6931427853594541105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3779c8901c57c7e43a2fb4deed215a93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  specialString: Special_P2
+  searchString: P2 Special Move
+  model: {fileID: 1373754011324823108}
+  hitClip: {fileID: 8300000, guid: 04f7dc4d9e987db458a2dad5730d02ec, type: 3}
+  meterAttackClip: {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
+  isPlayerOne: 0
+  col: {fileID: 6931427853594541103}
 --- !u!114 &6931427853594541099
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public string punchString, uppercutString, specialString, searchString;
+    public string punchString, uppercutString, searchString;
     public Collider[] attackHitboxes;
     GameObject countdownIMG;
     public GameObject model;
@@ -15,7 +15,7 @@ public class PlayerAttack : MonoBehaviour
     Countdown go;
     public int specialMeter = 0;
     Slider meterSlider;
-    public AudioClip hitClip, meterAttackClip, meterClip;
+    public AudioClip hitClip, meterClip;
     AudioSource source;
     
 
@@ -70,24 +70,12 @@ public class PlayerAttack : MonoBehaviour
                 StartCoroutine(Attack(attackHitboxes[1], 15f, 0.4f, 3f));
             }
 
-            //if(Input.GetButtonDown(specialString) && attacking == false && specialMeter == 100)
-            //{
-            //    specialMeter = 0;
-            //    move.enabled = false;
-            //    attacking = true;
-            //    anim.SetTrigger("Kick");
-            //    StartCoroutine(Attack(attackHitboxes[2], 30f, 0.5f, 3.5f));  
-            //}
+            
         } 
     }
 
     IEnumerator Attack(Collider col, float dmg, float wait, float force)
     {
-        if (anim.GetBool("Kick") == true)
-        {
-            source.clip = meterAttackClip;
-            source.Play();
-        }
 
         yield return new WaitForSeconds(wait);
 

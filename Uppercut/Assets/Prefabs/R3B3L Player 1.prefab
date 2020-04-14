@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &974019684230907946
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7853418382606893849}
+  m_Layer: 8
+  m_Name: Projectile Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7853418382606893849
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974019684230907946}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.928, y: 2.473, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6782562552087214198}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &6782562551701766570
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,6 +259,7 @@ GameObject:
   - component: {fileID: 6782562552087214196}
   - component: {fileID: 6782562552087214195}
   - component: {fileID: 6782562552087214194}
+  - component: {fileID: 7986977886448514280}
   - component: {fileID: 6782562552087214199}
   - component: {fileID: 6782562552087214184}
   m_Layer: 8
@@ -253,6 +284,7 @@ Transform:
   - {fileID: 6782562552032468636}
   - {fileID: 6782562551864400699}
   - {fileID: 6782562551701766571}
+  - {fileID: 7853418382606893849}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -317,7 +349,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   punchString: Punch_P1
   uppercutString: Uppercut_P1
-  specialString: Special_P1
   searchString: P1 Special Move
   attackHitboxes:
   - {fileID: 6782562552032468637}
@@ -325,8 +356,27 @@ MonoBehaviour:
   model: {fileID: 3242993751993144621}
   specialMeter: 0
   hitClip: {fileID: 8300000, guid: 04f7dc4d9e987db458a2dad5730d02ec, type: 3}
-  meterAttackClip: {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
   meterClip: {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
+--- !u!114 &7986977886448514280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6782562552087214193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c5d558dec6b2d46917414b61f58ad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  specialString: Special_P1
+  searchString: P1 Special Move
+  projectile: {fileID: 464163257884815876, guid: 30120479514d548479df5affbe8534cf,
+    type: 3}
+  spawn: {fileID: 7853418382606893849}
+  model: {fileID: 3242993751993144621}
+  hitClip: {fileID: 8300000, guid: 04f7dc4d9e987db458a2dad5730d02ec, type: 3}
+  meterAttackClip: {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
 --- !u!114 &6782562552087214199
 MonoBehaviour:
   m_ObjectHideFlags: 0
