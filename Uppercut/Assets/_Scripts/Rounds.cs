@@ -7,8 +7,9 @@ public class Rounds : MonoBehaviour
 {
     public Image[] p1Rounds, p2Rounds;
     public Sprite defaultSprite, winSprite, drawSprite, timeSprite;
-    public GameObject timer, countdownIMG, koIMG, fadeOut;
+    public GameObject timer, countdownIMG, koIMG, fadeOut, winScreen;
     public Transform p1Spawn, p2Spawn;
+    public Text[] winText;
 
     float p1Health, p2Health, time;
     int p1Index, p2Index = 0;
@@ -33,6 +34,7 @@ public class Rounds : MonoBehaviour
     {
         InstantiatePlayers();
         go = countdownIMG.GetComponent<Countdown>();
+        winScreen.SetActive(false);
         StartRound();
     }
 
@@ -81,6 +83,7 @@ public class Rounds : MonoBehaviour
 
     public void StartRound()
     {
+        Time.timeScale = 1f;
         go.countdownDone = false;
         go.canAttack = false;
         countdownIMG.SetActive(true);
@@ -103,7 +106,7 @@ public class Rounds : MonoBehaviour
         if (index == 4)
         {
             images[index].sprite = s;
-            GameOver();
+            StartCoroutine(GameOver());
         }
         else
         {
@@ -112,16 +115,36 @@ public class Rounds : MonoBehaviour
         }
     }
 
-    void GameOver()
+    IEnumerator GameOver()
     {
-        Time.timeScale = 0.0f;
-        if(p1Rounds[4].sprite != defaultSprite)
+        yield return new WaitForSeconds(0.2f);
+
+        if(p1Rounds[4].sprite != defaultSprite && p2Rounds[4].sprite == defaultSprite)
         {
-            Debug.Log("Player 1 wins");
+            for (int i = 0; i < winText.Length; i++)
+            {
+                winText[i].text = players[0].GetComponent<PlayerMovement>().name + " wins!";
+            }
+
+            winScreen.SetActive(true);
         }
-        else if(p2Rounds[4].sprite != defaultSprite)
+        else if(p2Rounds[4].sprite != defaultSprite && p1Rounds[4].sprite == defaultSprite)
         {
-            Debug.Log("Player 2 wins");
+            for (int i = 0; i < winText.Length; i++)
+            {
+                winText[i].text = players[0].GetComponent<PlayerMovement>().name + " wins!";
+            }
+
+            winScreen.SetActive(true);
+        }
+        else if (p2Rounds[4].sprite != defaultSprite && p1Rounds[4].sprite != defaultSprite)
+        {
+            for (int i = 0; i < winText.Length; i++)
+            {
+                winText[i].text = "Draw!";
+            }
+
+            winScreen.SetActive(true);
         }
         
     }
