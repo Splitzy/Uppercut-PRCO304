@@ -8,12 +8,13 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     public GameObject mainMenu, settingsMenu, controlsMenu, cssMenu, firstButton, eventSystem;
-    public string[] characterNames;
-    public Text p1Name, p2Name;
+    public string[] characterNames, lvlNames;
+    public Text p1Name, p2Name, lvlText;
 
     GameObject newButton;
     int p1Index = 0;
     int p2Index = 0;
+    int lvlIndex = 0;
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class MainMenu : MonoBehaviour
 
         p1Name.text = characterNames[p1Index];
         p2Name.text = characterNames[p1Index];
+        lvlText.text = lvlNames[lvlIndex];
         firstButton = GameObject.Find("Play Button");
     }
 
@@ -107,13 +109,35 @@ public class MainMenu : MonoBehaviour
         p2Name.text = characterNames[p2Index];
     }
 
+    public void LevelCycleLeft()
+    {
+        lvlIndex--;
+        if (lvlIndex < 0)
+        {
+            lvlIndex = lvlNames.Length - 1;
+        }
+
+        lvlText.text = lvlNames[lvlIndex];
+    }
+
+    public void LevelCycleRight()
+    {
+        lvlIndex++;
+        if (lvlIndex < 0)
+        {
+            lvlIndex = 0;
+        }
+
+        lvlText.text = lvlNames[lvlIndex];
+    }
+
 
 
     public void StartGame()
     {
         PlayerPrefs.SetInt("P1", p1Index);
         PlayerPrefs.SetInt("P2", p2Index);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(lvlIndex + 1);
     }
 
     public void QuitGame()
