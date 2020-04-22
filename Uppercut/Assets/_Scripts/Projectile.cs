@@ -14,7 +14,7 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = transform.forward * 2.5f;
+        rb.velocity = transform.forward * 4f;
         Destroy(gameObject, 3);
     }
 

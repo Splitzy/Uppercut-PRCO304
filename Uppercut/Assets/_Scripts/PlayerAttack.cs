@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public string punchString, uppercutString, searchString;
+    public string punchString, uppercutString;
+    public string[] searchString;
     public Collider[] attackHitboxes;
     GameObject countdownIMG;
     public GameObject model;
@@ -15,6 +16,7 @@ public class PlayerAttack : MonoBehaviour
     Countdown go;
     public int specialMeter = 0;
     Slider meterSlider;
+    GameObject specialTxt;
     public AudioClip hitClip, meterClip;
     AudioSource source;
     
@@ -24,7 +26,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Start()
     {
-        meterSlider = GameObject.Find(searchString).GetComponent<Slider>();
+        meterSlider = GameObject.Find(searchString[0]).GetComponent<Slider>();
         countdownIMG = GameObject.Find("Countdown");
         anim = model.GetComponent<Animator>();
         attacking = false;
@@ -32,6 +34,8 @@ public class PlayerAttack : MonoBehaviour
         go = countdownIMG.GetComponent<Countdown>();
         meterSlider.value = specialMeter;
         source = GetComponent<AudioSource>();
+        specialTxt = GameObject.Find(searchString[1]);
+        specialTxt.SetActive(false);
     }
 
     void Update()
@@ -52,6 +56,11 @@ public class PlayerAttack : MonoBehaviour
                 specialMeter = 100;
                 source.clip = meterClip;
                 source.Play();
+                specialTxt.SetActive(true);
+            }
+            else
+            {
+                specialTxt.SetActive(false);
             }
 
             if (Input.GetButtonDown(punchString) && attacking == false)

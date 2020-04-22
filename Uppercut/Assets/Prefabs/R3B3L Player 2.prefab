@@ -103,7 +103,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   punchString: Punch_P2
   uppercutString: Uppercut_P2
-  searchString: P2 Special Move
+  searchString:
+  - P2 Special Move
+  - P2SpecialTxt
   attackHitboxes:
   - {fileID: 150249425505082420}
   - {fileID: 150249425666726293}
@@ -496,6 +498,20 @@ Transform:
   m_Father: {fileID: 150249424888183519}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!64 &1235910043078613602
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8157186710844741508}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &150249424189083277
 PrefabInstance:
   m_ObjectHideFlags: 0

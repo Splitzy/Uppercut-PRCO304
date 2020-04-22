@@ -275,14 +275,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   punchString: Punch_P2
   uppercutString: Uppercut_P2
-  searchString: P2 Special Move
+  searchString:
+  - P2 Special Move
+  - P2SpecialTxt
   attackHitboxes:
   - {fileID: 8453405649657439023}
   - {fileID: 8453405649273328711}
   model: {fileID: 464269541923932813}
   specialMeter: 0
   hitClip: {fileID: 8300000, guid: 04f7dc4d9e987db458a2dad5730d02ec, type: 3}
-  meterAttackClip: {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
   meterClip: {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
 --- !u!114 &5010458607895511685
 MonoBehaviour:
@@ -302,7 +303,6 @@ MonoBehaviour:
   model: {fileID: 464269541923932813}
   hitClip: {fileID: 8300000, guid: 04f7dc4d9e987db458a2dad5730d02ec, type: 3}
   meterAttackClip: {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
-  meterClip: {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
 --- !u!114 &8453405648701939671
 MonoBehaviour:
   m_ObjectHideFlags: 0
