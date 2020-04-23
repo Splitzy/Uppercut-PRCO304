@@ -14,7 +14,8 @@ public class RykerSpecialMove : MonoBehaviour
     PlayerMovement move;
     Countdown go;
     Slider meterSlider;
-    public AudioClip hitClip, meterAttackClip;
+    public AudioClip meterAttackClip;
+    public AudioClip[] hitClips;
     AudioSource source;
 
     // Start is called before the first frame update
@@ -61,7 +62,7 @@ public class RykerSpecialMove : MonoBehaviour
                 continue;
             }
 
-            source.clip = hitClip;
+            source.clip = hitClips[Random.Range(0, hitClips.Length)];
             source.Play();
 
             c.SendMessage("TakeDamage", dmg);

@@ -125,8 +125,17 @@ MonoBehaviour:
   - {fileID: 8740221529459784625}
   model: {fileID: 750531284350473976}
   specialMeter: 0
-  hitClip: {fileID: 8300000, guid: 04f7dc4d9e987db458a2dad5730d02ec, type: 3}
   meterClip: {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
+  hitClips:
+  - {fileID: 8300000, guid: f3f29babcfb70474ea6b959219699b67, type: 3}
+  - {fileID: 8300000, guid: 1d4eed679ee169149ba6465a25ad5419, type: 3}
+  - {fileID: 8300000, guid: 9c242752d84b2474cbd32e090cd8caf3, type: 3}
+  - {fileID: 8300000, guid: 32ee9a00eb6daba4cb32cc4e61873db0, type: 3}
+  - {fileID: 8300000, guid: 119d3fbe1a1631f439c8c838c70ec63b, type: 3}
+  - {fileID: 8300000, guid: a22113e6d96469543adc3a172d6c8348, type: 3}
+  - {fileID: 8300000, guid: 03f2c7b3643d4434d8184a7477293d9d, type: 3}
+  - {fileID: 8300000, guid: d5c82e84c047e31419aebcb5f6beb1ee, type: 3}
+  - {fileID: 8300000, guid: 80972e485aa0e57459653abca3c37515, type: 3}
 --- !u!114 &7408515814327246689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,8 +152,17 @@ MonoBehaviour:
   searchString: P1 Special Move
   specialHitbox: {fileID: 8740221529021672351}
   model: {fileID: 750531284350473976}
-  hitClip: {fileID: 8300000, guid: 04f7dc4d9e987db458a2dad5730d02ec, type: 3}
   meterAttackClip: {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
+  hitClips:
+  - {fileID: 8300000, guid: f3f29babcfb70474ea6b959219699b67, type: 3}
+  - {fileID: 8300000, guid: 1d4eed679ee169149ba6465a25ad5419, type: 3}
+  - {fileID: 8300000, guid: 9c242752d84b2474cbd32e090cd8caf3, type: 3}
+  - {fileID: 8300000, guid: 32ee9a00eb6daba4cb32cc4e61873db0, type: 3}
+  - {fileID: 8300000, guid: 119d3fbe1a1631f439c8c838c70ec63b, type: 3}
+  - {fileID: 8300000, guid: a22113e6d96469543adc3a172d6c8348, type: 3}
+  - {fileID: 8300000, guid: 03f2c7b3643d4434d8184a7477293d9d, type: 3}
+  - {fileID: 8300000, guid: d5c82e84c047e31419aebcb5f6beb1ee, type: 3}
+  - {fileID: 8300000, guid: 80972e485aa0e57459653abca3c37515, type: 3}
 --- !u!114 &8740221528727447362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,7 +198,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

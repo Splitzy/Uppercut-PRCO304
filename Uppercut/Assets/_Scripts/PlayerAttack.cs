@@ -12,12 +12,14 @@ public class PlayerAttack : MonoBehaviour
     public GameObject model;
     Animator anim;
     bool attacking;
+    bool audioPlayed;
     PlayerMovement move;
     Countdown go;
     public int specialMeter = 0;
     Slider meterSlider;
     GameObject specialTxt;
-    public AudioClip hitClip, meterClip;
+    public AudioClip meterClip;
+    public AudioClip[] hitClips;
     AudioSource source;
     
 
@@ -30,6 +32,7 @@ public class PlayerAttack : MonoBehaviour
         countdownIMG = GameObject.Find("Countdown");
         anim = model.GetComponent<Animator>();
         attacking = false;
+        audioPlayed = false;
         move = gameObject.GetComponent<PlayerMovement>();
         go = countdownIMG.GetComponent<Countdown>();
         meterSlider.value = specialMeter;
@@ -54,13 +57,20 @@ public class PlayerAttack : MonoBehaviour
             if (specialMeter >= 100)
             {
                 specialMeter = 100;
-                source.clip = meterClip;
-                source.Play();
                 specialTxt.SetActive(true);
+
+                if(!audioPlayed)
+                {
+                    source.clip = meterClip;
+                    source.Play();
+                    audioPlayed = true;
+                }
+
             }
             else
             {
                 specialTxt.SetActive(false);
+                audioPlayed = false;
             }
 
             if (Input.GetButtonDown(punchString) && attacking == false)
@@ -97,7 +107,7 @@ public class PlayerAttack : MonoBehaviour
                 continue;
             }
 
-            source.clip = hitClip;
+            source.clip = hitClips[Random.Range(0, hitClips.Length)];
             source.Play();
 
             c.SendMessage("TakeDamage", dmg);

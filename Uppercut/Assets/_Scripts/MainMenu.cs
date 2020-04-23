@@ -7,9 +7,11 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject mainMenu, settingsMenu, controlsMenu, cssMenu, firstButton, eventSystem;
+    public GameObject mainMenu, settingsMenu, controlsMenu, cssMenu, levelMenu, firstButton, eventSystem;
     public string[] characterNames, lvlNames;
     public Text p1Name, p2Name, lvlText;
+    public Sprite[] playerSprites, levelSprites;
+    public Image p1Image, p2Image, lvlImage;
 
     GameObject newButton;
     int p1Index = 0;
@@ -22,10 +24,16 @@ public class MainMenu : MonoBehaviour
         settingsMenu.SetActive(false);
         controlsMenu.SetActive(false);
         cssMenu.SetActive(false);
+        levelMenu.SetActive(false);
 
         p1Name.text = characterNames[p1Index];
-        p2Name.text = characterNames[p1Index];
+        p2Name.text = characterNames[p2Index];
+
+        p1Image.sprite = playerSprites[p1Index];
+        p2Image.sprite = playerSprites[p2Index];
+
         lvlText.text = lvlNames[lvlIndex];
+        lvlImage.sprite = levelSprites[lvlIndex];
         firstButton = GameObject.Find("Play Button");
     }
 
@@ -60,8 +68,18 @@ public class MainMenu : MonoBehaviour
     {
         cssMenu.SetActive(true);
         mainMenu.SetActive(false);
+        levelMenu.SetActive(false);
 
-        firstButton = GameObject.Find("P1 Right Button");
+        firstButton = GameObject.Find("P1 Left Button");
+        eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(firstButton, null);
+    }
+
+    public void SwitchToLevelSelect()
+    {
+        cssMenu.SetActive(false);
+        levelMenu.SetActive(true);
+
+        firstButton = GameObject.Find("Level Left Button");
         eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(firstButton, null);
     }
 
@@ -74,6 +92,7 @@ public class MainMenu : MonoBehaviour
         }
 
         p1Name.text = characterNames[p1Index];
+        p1Image.sprite = playerSprites[p1Index];
     }
 
     public void P1CycleLeft()
@@ -85,6 +104,7 @@ public class MainMenu : MonoBehaviour
         }
 
         p1Name.text = characterNames[p1Index];
+        p1Image.sprite = playerSprites[p1Index];
     }
 
     public void P2CycleRight()
@@ -96,6 +116,7 @@ public class MainMenu : MonoBehaviour
         }
 
         p2Name.text = characterNames[p2Index];
+        p2Image.sprite = playerSprites[p2Index];
     }
 
     public void P2CycleLeft()
@@ -107,6 +128,7 @@ public class MainMenu : MonoBehaviour
         }
 
         p2Name.text = characterNames[p2Index];
+        p2Image.sprite = playerSprites[p2Index];
     }
 
     public void LevelCycleLeft()
@@ -118,17 +140,19 @@ public class MainMenu : MonoBehaviour
         }
 
         lvlText.text = lvlNames[lvlIndex];
+        lvlImage.sprite = levelSprites[lvlIndex];
     }
 
     public void LevelCycleRight()
     {
         lvlIndex++;
-        if (lvlIndex < 0)
+        if (lvlIndex >= lvlNames.Length)
         {
             lvlIndex = 0;
         }
 
         lvlText.text = lvlNames[lvlIndex];
+        lvlImage.sprite = levelSprites[lvlIndex];
     }
 
 
