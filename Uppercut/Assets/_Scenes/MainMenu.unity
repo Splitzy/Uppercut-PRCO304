@@ -405,7 +405,7 @@ MonoBehaviour:
   - Kera
   - R3B3L
   lvlNames:
-  - Test Level
+  - Hallway
   - Rooftop
   - Mountains
   p1Name: {fileID: 1565149845}
@@ -416,7 +416,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8935c33db79952c46a91f53f2cce097e, type: 3}
   - {fileID: 21300000, guid: 82d50f7fc17e4454ab2fab41218ceadd, type: 3}
   levelSprites:
-  - {fileID: 21300000, guid: f08bd12f382e46249a01c665eccee4c0, type: 3}
+  - {fileID: 21300000, guid: bf0d55f182d604e47af15009a3ce4c9f, type: 3}
   - {fileID: 21300000, guid: 40cb0b5a44dff6b49be9a5e216f6cedf, type: 3}
   - {fileID: 21300000, guid: e2bb6781ceb13f043acd0e99ccb519e3, type: 3}
   p1Image: {fileID: 532890803}
@@ -1670,7 +1670,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Quit
+  m_Text: Return
 --- !u!222 &351830562
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8419,7 +8419,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Quit
+  m_Text: Return
 --- !u!222 &2056974524
 CanvasRenderer:
   m_ObjectHideFlags: 0

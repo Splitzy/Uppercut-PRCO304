@@ -20,6 +20,9 @@ public class PlayerAttack : MonoBehaviour
     GameObject specialTxt;
     public AudioClip meterClip;
     public AudioClip[] hitClips;
+    public AudioClip whiffClip;
+    public GameObject[] trail;
+    public AudioSource voice;
     AudioSource source;
     
 
@@ -37,6 +40,7 @@ public class PlayerAttack : MonoBehaviour
         go = countdownIMG.GetComponent<Countdown>();
         meterSlider.value = specialMeter;
         source = GetComponent<AudioSource>();
+        voice = GetComponent<AudioSource>();
         specialTxt = GameObject.Find(searchString[1]);
         specialTxt.SetActive(false);
     }
@@ -61,8 +65,8 @@ public class PlayerAttack : MonoBehaviour
 
                 if(!audioPlayed)
                 {
-                    source.clip = meterClip;
-                    source.Play();
+                    voice.clip = meterClip;
+                    voice.Play();
                     audioPlayed = true;
                 }
 
@@ -79,6 +83,9 @@ public class PlayerAttack : MonoBehaviour
                 anim.SetTrigger("Punch");
                 attacking = true;
                 StartCoroutine(Attack(attackHitboxes[0], 8f, 0.2f, 1.5f));
+                trail[0].SetActive(true);
+                source.clip = whiffClip;
+                source.Play();
             }
 
             if (Input.GetButtonDown(uppercutString) && attacking == false)
@@ -87,6 +94,9 @@ public class PlayerAttack : MonoBehaviour
                 attacking = true;
                 anim.SetTrigger("Uppercut");
                 StartCoroutine(Attack(attackHitboxes[1], 15f, 0.4f, 3f));
+                trail[1].SetActive(true);
+                source.clip = whiffClip;
+                source.Play();
             }
 
             
@@ -126,5 +136,7 @@ public class PlayerAttack : MonoBehaviour
         
         attacking = false;
         move.enabled = true;
+        trail[0].SetActive(false);
+        trail[1].SetActive(false);
     }
 }
