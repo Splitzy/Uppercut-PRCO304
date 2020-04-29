@@ -555,6 +555,8 @@ MonoBehaviour:
   - {fileID: 633070132053646034}
   - {fileID: 7472614521824880182}
   voice: {fileID: 8453405648644934045}
+  hitParticle: {fileID: 2115435301217976443, guid: 030ca062170f98c408d1d01490add9d9,
+    type: 3}
 --- !u!114 &5010458607895511685
 MonoBehaviour:
   m_ObjectHideFlags: 0

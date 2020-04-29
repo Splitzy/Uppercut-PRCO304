@@ -23,6 +23,7 @@ public class PlayerAttack : MonoBehaviour
     public AudioClip whiffClip;
     public GameObject[] trail;
     public AudioSource voice;
+    public GameObject hitParticle;
     AudioSource source;
     
 
@@ -82,7 +83,7 @@ public class PlayerAttack : MonoBehaviour
                 move.enabled = false;
                 anim.SetTrigger("Punch");
                 attacking = true;
-                StartCoroutine(Attack(attackHitboxes[0], 8f, 0.2f, 1.5f));
+                StartCoroutine(Attack(attackHitboxes[0], 8f, 0.2f, 1.5f, 0));
                 trail[0].SetActive(true);
                 source.clip = whiffClip;
                 source.Play();
@@ -93,7 +94,7 @@ public class PlayerAttack : MonoBehaviour
                 move.enabled = false;
                 attacking = true;
                 anim.SetTrigger("Uppercut");
-                StartCoroutine(Attack(attackHitboxes[1], 15f, 0.4f, 3f));
+                StartCoroutine(Attack(attackHitboxes[1], 15f, 0.35f, 3f, 1));
                 trail[1].SetActive(true);
                 source.clip = whiffClip;
                 source.Play();
@@ -103,7 +104,7 @@ public class PlayerAttack : MonoBehaviour
         } 
     }
 
-    IEnumerator Attack(Collider col, float dmg, float wait, float force)
+    IEnumerator Attack(Collider col, float dmg, float wait, float force, int index)
     {
 
         yield return new WaitForSeconds(wait);
@@ -127,6 +128,8 @@ public class PlayerAttack : MonoBehaviour
                 Vector3 dir = c.transform.position - transform.position;
                 StartCoroutine(c.gameObject.GetComponent<PlayerHealth>().KnockBack(dir, force));
             }
+
+            Instantiate(hitParticle, trail[index].transform.position, Quaternion.identity);
 
             specialMeter += 10;
             meterSlider.value = specialMeter;

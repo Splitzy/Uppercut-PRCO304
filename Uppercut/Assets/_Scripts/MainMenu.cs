@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     public GameObject mainMenu, settingsMenu, controlsMenu, cssMenu, levelMenu, firstButton, eventSystem;
-    public string[] characterNames, lvlNames;
-    public Text p1Name, p2Name, lvlText;
+    public string[] lvlNames;
+    public Text lvlText;
     public Sprite[] playerSprites, levelSprites;
     public Image p1Image, p2Image, lvlImage;
 
@@ -25,9 +25,6 @@ public class MainMenu : MonoBehaviour
         controlsMenu.SetActive(false);
         cssMenu.SetActive(false);
         levelMenu.SetActive(false);
-
-        p1Name.text = characterNames[p1Index];
-        p2Name.text = characterNames[p2Index];
 
         p1Image.sprite = playerSprites[p1Index];
         p2Image.sprite = playerSprites[p2Index];
@@ -86,12 +83,11 @@ public class MainMenu : MonoBehaviour
     public void P1CycleRight()
     {
         p1Index++;
-        if (p1Index >= characterNames.Length)
+        if (p1Index >= playerSprites.Length)
         {
             p1Index = 0;
         }
 
-        p1Name.text = characterNames[p1Index];
         p1Image.sprite = playerSprites[p1Index];
     }
 
@@ -100,22 +96,20 @@ public class MainMenu : MonoBehaviour
         p1Index--;
         if (p1Index < 0)
         {
-            p1Index = characterNames.Length - 1;
+            p1Index = playerSprites.Length - 1;
         }
 
-        p1Name.text = characterNames[p1Index];
         p1Image.sprite = playerSprites[p1Index];
     }
 
     public void P2CycleRight()
     {
         p2Index++;
-        if (p2Index >= characterNames.Length)
+        if (p2Index >= playerSprites.Length)
         {
             p2Index = 0;
         }
 
-        p2Name.text = characterNames[p2Index];
         p2Image.sprite = playerSprites[p2Index];
     }
 
@@ -124,10 +118,9 @@ public class MainMenu : MonoBehaviour
         p2Index--;
         if (p2Index < 0)
         {
-            p2Index = characterNames.Length - 1;
+            p2Index = playerSprites.Length - 1;
         }
 
-        p2Name.text = characterNames[p2Index];
         p2Image.sprite = playerSprites[p2Index];
     }
 
