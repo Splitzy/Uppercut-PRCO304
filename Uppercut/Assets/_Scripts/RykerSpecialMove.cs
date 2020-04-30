@@ -16,6 +16,8 @@ public class RykerSpecialMove : MonoBehaviour
     Slider meterSlider;
     public AudioClip meterAttackClip;
     public AudioClip[] hitClips;
+    public GameObject trail;
+    public GameObject hitParticles;
     AudioSource source;
 
     // Start is called before the first frame update
@@ -42,6 +44,7 @@ public class RykerSpecialMove : MonoBehaviour
                 attacking = true;
                 anim.SetTrigger("Kick");
                 StartCoroutine(SpecialAttack(specialHitbox, 30f, 0.5f, 3.5f));
+                trail.SetActive(true);
             }
         }
     }
@@ -73,6 +76,8 @@ public class RykerSpecialMove : MonoBehaviour
                 StartCoroutine(c.gameObject.GetComponent<PlayerHealth>().KnockBack(dir, force));
             }
 
+            Instantiate(hitParticles, trail.transform.position, Quaternion.identity);
+
             GetComponent<PlayerAttack>().specialMeter += 10;
             meterSlider.value = GetComponent<PlayerAttack>().specialMeter;
         }
@@ -81,5 +86,6 @@ public class RykerSpecialMove : MonoBehaviour
 
         attacking = false;
         move.enabled = true;
+        trail.SetActive(false);
     }
 }

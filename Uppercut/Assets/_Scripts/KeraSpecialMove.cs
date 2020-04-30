@@ -16,6 +16,7 @@ public class KeraSpecialMove : MonoBehaviour
     AudioSource source;
     public bool isPlayerOne;
     public Collider col;
+    public GameObject teleportParticles;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +46,7 @@ public class KeraSpecialMove : MonoBehaviour
     {
         model.SetActive(false);
         move.enabled = false;
+        Instantiate(teleportParticles, gameObject.transform.position, Quaternion.identity);
 
         if (isPlayerOne)
         {
@@ -58,6 +60,7 @@ public class KeraSpecialMove : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
 
         model.SetActive(true);
+        Instantiate(teleportParticles, gameObject.transform.position, Quaternion.identity);
         move.enabled = true;
 
     }

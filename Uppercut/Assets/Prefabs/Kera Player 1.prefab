@@ -461,6 +461,8 @@ MonoBehaviour:
   meterAttackClip: {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
   isPlayerOne: 1
   col: {fileID: 7640468953354186613}
+  teleportParticles: {fileID: 5800834783536791092, guid: 977f0f2818788b64394707192f29b2f4,
+    type: 3}
 --- !u!114 &7640468953354186609
 MonoBehaviour:
   m_ObjectHideFlags: 0
