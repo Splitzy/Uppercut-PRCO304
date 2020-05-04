@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject model;
     Countdown go;
     Rigidbody rb;
-    Vector3 input;
+    Vector3 i;
     GameObject cd;
 
     [SerializeField]
@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
         {
             float moveHorizontal = Input.GetAxis(h);
 
-            input = new Vector3(moveHorizontal, 0, 0);
+            i = new Vector3(moveHorizontal, 0, 0);
 
             if (Input.GetAxisRaw(h) > 0 || Input.GetAxisRaw(h) < 0)
             {
@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
                 anim.SetBool("Walking", false);
             }
 
-            rb.MovePosition(transform.position + (input * speed * Time.fixedDeltaTime));
+            rb.MovePosition(transform.position + (i * speed * Time.fixedDeltaTime));
 
         }
     }
