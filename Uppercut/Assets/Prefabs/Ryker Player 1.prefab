@@ -381,7 +381,7 @@ MonoBehaviour:
   - {fileID: 8740221529459784625}
   model: {fileID: 750531284350473976}
   specialMeter: 0
-  meterClip: {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
+  meterClip: {fileID: 8300000, guid: 82f6cddd0977e2840916813e6d1e9834, type: 3}
   hitClips:
   - {fileID: 8300000, guid: f3f29babcfb70474ea6b959219699b67, type: 3}
   - {fileID: 8300000, guid: 1d4eed679ee169149ba6465a25ad5419, type: 3}
@@ -444,9 +444,16 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   hurtClip:
-  - {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
+  - {fileID: 8300000, guid: 33672c5bbc4b3a848ab135bf45ccffb4, type: 3}
+  - {fileID: 8300000, guid: ee0d9efffbf69ab4dba0b3b361e1b209, type: 3}
+  - {fileID: 8300000, guid: 590632a2149e0c44e92604dbc7c11e98, type: 3}
+  - {fileID: 8300000, guid: 9664afa6e3caff847bb4b687b7f0775c, type: 3}
+  - {fileID: 8300000, guid: 1e0ee1a0d07feba4e9ed66530b0355bc, type: 3}
+  - {fileID: 8300000, guid: 341523a64803be1428febff17b81acd5, type: 3}
+  - {fileID: 8300000, guid: 159b3828d123bef42b24d38deaa80600, type: 3}
+  - {fileID: 8300000, guid: 3f1c5f8100527b648ac870f43901fe93, type: 3}
   deathClip:
-  - {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
+  - {fileID: 8300000, guid: 01f4f25f0d2b0d948888d332eb3cb7f2, type: 3}
   searchString:
   - P1 Health
   - P1 Fill

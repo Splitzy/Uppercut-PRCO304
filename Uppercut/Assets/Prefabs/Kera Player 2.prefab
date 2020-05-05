@@ -251,7 +251,7 @@ MonoBehaviour:
   - {fileID: 6931427854239475984}
   model: {fileID: 1373754011324823108}
   specialMeter: 0
-  meterClip: {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
+  meterClip: {fileID: 8300000, guid: 82f6cddd0977e2840916813e6d1e9834, type: 3}
   hitClips:
   - {fileID: 8300000, guid: f3f29babcfb70474ea6b959219699b67, type: 3}
   - {fileID: 8300000, guid: 1d4eed679ee169149ba6465a25ad5419, type: 3}

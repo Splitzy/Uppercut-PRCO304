@@ -64,16 +64,18 @@ public class PlayerHealth : MonoBehaviour
 
         anim.SetTrigger("Hit");
 
+        move.enabled = false;
+
         if (health <= 0)
         {
             Die();
         }
+        else
+        {
+            src.clip = hurtClip[Random.Range(0, hurtClip.Length)];
 
-        move.enabled = false;
-
-        src.clip = hurtClip[Random.Range(0, hurtClip.Length)];
-
-        src.Play();
+            src.Play();
+        }
 
         yield return new WaitForSeconds(0.5f);
 
