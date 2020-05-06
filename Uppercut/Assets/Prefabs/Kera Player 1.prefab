@@ -478,9 +478,16 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   hurtClip:
-  - {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
+  - {fileID: 8300000, guid: 6669450861be0dd4089ca3f71ae8dc77, type: 3}
+  - {fileID: 8300000, guid: e093b248cac99e24e9cb37b98adaddc5, type: 3}
+  - {fileID: 8300000, guid: 28ca065c09e5d63499d9ab0480e0b682, type: 3}
+  - {fileID: 8300000, guid: 1f39b9c813f3b944d8582ea33178fae1, type: 3}
+  - {fileID: 8300000, guid: b39fb9d221d7c1b499f28ce9a01b71fb, type: 3}
+  - {fileID: 8300000, guid: 74a9e5cabeb1e0147b86cf1f35ae3b00, type: 3}
+  - {fileID: 8300000, guid: 0eb5505b1d89ff845ad4084e208e5001, type: 3}
+  - {fileID: 8300000, guid: a467b8ff9ce566646a035b877b48067e, type: 3}
   deathClip:
-  - {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
+  - {fileID: 8300000, guid: 966e4b54e9b75ef49b7f4b6383d8076c, type: 3}
   searchString:
   - P1 Health
   - P1 Fill
