@@ -14,7 +14,7 @@ public class RykerSpecialMove : MonoBehaviour
     PlayerMovement move;
     Countdown go;
     Slider meterSlider;
-    public AudioClip meterAttackClip;
+    public AudioClip whiffClip;
     public AudioClip[] hitClips;
     public GameObject trail;
     public GameObject hitParticles;
@@ -43,7 +43,9 @@ public class RykerSpecialMove : MonoBehaviour
                 move.enabled = false;
                 attacking = true;
                 anim.SetTrigger("Kick");
-                StartCoroutine(SpecialAttack(specialHitbox, 30f, 0.5f, 3.5f));
+                StartCoroutine(SpecialAttack(specialHitbox, 30f, 0.5f, 4f));
+                source.clip = whiffClip;
+                source.Play();
                 trail.SetActive(true);
             }
         }
@@ -51,9 +53,6 @@ public class RykerSpecialMove : MonoBehaviour
 
     IEnumerator SpecialAttack(Collider col, float dmg, float wait, float force)
     {
-        source.clip = meterAttackClip;
-        source.Play();
-
         yield return new WaitForSeconds(wait);
 
         Collider[] cols = Physics.OverlapBox(col.bounds.center, col.bounds.extents, col.transform.rotation, LayerMask.GetMask("Hitbox"));

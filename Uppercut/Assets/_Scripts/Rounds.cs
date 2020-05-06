@@ -85,7 +85,6 @@ public class Rounds : MonoBehaviour
     {
         Time.timeScale = 1f;
         go.countdownDone = false;
-        go.canAttack = false;
         countdownIMG.SetActive(true);
         check = false;
 
@@ -105,11 +104,13 @@ public class Rounds : MonoBehaviour
     {
         if (index == 4)
         {
+            go.canAttack = false;
             images[index].sprite = s;
             StartCoroutine(GameOver());
         }
         else
         {
+            go.canAttack = false;
             images[index].sprite = s;
             koIMG.SetActive(true);
         }

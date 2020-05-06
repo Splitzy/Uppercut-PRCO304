@@ -415,7 +415,7 @@ MonoBehaviour:
   searchString: P1 Special Move
   specialHitbox: {fileID: 8740221529021672351}
   model: {fileID: 750531284350473976}
-  meterAttackClip: {fileID: 8300000, guid: 0a0bcdb1931236d4398b7da7e79bfd77, type: 3}
+  whiffClip: {fileID: 8300000, guid: b5edac653ebbd114a84719c831284dbd, type: 3}
   hitClips:
   - {fileID: 8300000, guid: f3f29babcfb70474ea6b959219699b67, type: 3}
   - {fileID: 8300000, guid: 1d4eed679ee169149ba6465a25ad5419, type: 3}

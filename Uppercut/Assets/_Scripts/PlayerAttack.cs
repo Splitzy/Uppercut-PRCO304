@@ -83,7 +83,7 @@ public class PlayerAttack : MonoBehaviour
                 move.enabled = false;
                 anim.SetTrigger("Punch");
                 attacking = true;
-                StartCoroutine(Attack(attackHitboxes[0], 8f, 0.2f, 1.5f, 0));
+                StartCoroutine(Attack(attackHitboxes[0], 10f, 0.2f, 2f, 0));
                 trail[0].SetActive(true);
                 source.clip = whiffClip;
                 source.Play();

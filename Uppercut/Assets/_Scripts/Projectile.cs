@@ -15,7 +15,7 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = transform.forward * 6f;
+        rb.velocity = transform.forward * 7.5f;
         Destroy(gameObject, 3);
     }
 
@@ -23,7 +23,7 @@ public class Projectile : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            other.SendMessage("TakeDamage", 10);
+            other.SendMessage("TakeDamage", 25);
             Instantiate(hitParticle, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
